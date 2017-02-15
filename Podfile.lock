@@ -1,0 +1,18 @@
+PODS:
+  - FLEX (2.4.0)
+  - MSWeakTimer (1.1.0)
+  - SnapKit (3.1.2)
+
+DEPENDENCIES:
+  - FLEX (~> 2.0)
+  - MSWeakTimer (~> 1.1.0)
+  - SnapKit (~> 3.1.0)
+
+SPEC CHECKSUMS:
+  FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
+  MSWeakTimer: 9426150f933b80ed3acf3f6d228e4b61f0e303c8
+  SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
+
+PODFILE CHECKSUM: a977fc4f10ec24013f653b4991ebf06f810eb149
+
+COCOAPODS: 1.2.0

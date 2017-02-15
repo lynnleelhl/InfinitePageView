@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  InfinitePageView
 //
-//  Created by chantu on 13/02/2017.
-//  Copyright © 2017 chantu. All rights reserved.
+//  Created by hli on 13/02/2017.
+//  Copyright © 2017 hli. All rights reserved.
 //
 
 import UIKit

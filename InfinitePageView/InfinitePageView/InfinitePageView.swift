@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import SnapKit
+import MSWeakTimer
 
 public enum InfinitePageViewScrollDirection {
     case vertical
@@ -16,10 +18,10 @@ public enum InfinitePageViewScrollDirection {
 
 public protocol InfinitePageViewDelegate {
     func numberOfViews() -> Int
-    func bannerPageScrollView(viewForIndexAt index: Int) -> UIView
+    func InfinitePageView(viewForIndexAt index: Int) -> UIView
 }
 
-open class InfinitePageViewView : UIView, UIScrollViewDelegate {
+open class InfinitePageView : UIView, UIScrollViewDelegate {
 
     open var scrollDirection : InfinitePageViewScrollDirection = InfinitePageViewScrollDirection.horizontal
     fileprivate var viewList = [UIView]()
@@ -56,30 +58,15 @@ open class InfinitePageViewView : UIView, UIScrollViewDelegate {
         self.scrollView.showsHorizontalScrollIndicator = false
         self.scrollView.isPagingEnabled = true
         
-        // add constaints, target 9.0 or above
-        let margins = self.layoutMarginsGuide
-        self.scrollView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
-        self.scrollView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
-        self.scrollView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-        self.scrollView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        let scrollViewMargins = self.scrollView.layoutMarginsGuide
-        self.pageControl.bottomAnchor.constraint(equalTo: scrollViewMargins.bottomAnchor, constant: -6).isActive = true
-        self.pageControl.centerXAnchor.constraint(equalTo: scrollViewMargins.centerXAnchor).isActive = true
-        self.pageControl.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        self.scrollView.snp.makeConstraints { (make) in
+            make.edges.equalTo(0.0)
+        }
 
-        
-        // or if you want to support target 9.0 below,
-        // you can uncomment the following code and import SnapKit
-        
-        //self.scrollView.snp.makeConstraints { (make) in
-        //    make.edges.equalTo(0.0)
-        //}
-
-        //self.pageControl.snp.makeConstraints { (make) in
-        //    make.bottom.equalTo(-6.0)
-        //    make.centerX.equalToSuperview()
-        //    make.height.equalTo(5.0)
-        //}
+        self.pageControl.snp.makeConstraints { (make) in
+            make.bottom.equalTo(-16.0)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(5.0)
+        }
 
         self.initTimer()
     }
@@ -99,7 +86,7 @@ open class InfinitePageViewView : UIView, UIScrollViewDelegate {
             let num = delegate.numberOfViews()
             if num <= 1 {
                 for i in 0..<num {
-                    let view = delegate.bannerPageScrollView(viewForIndexAt: i)
+                    let view = delegate.InfinitePageView(viewForIndexAt: i)
                     self.viewList.append(view)
                     view.frame = CGRect(x: 0, y: 0,
                                         width: self.frame.width,
@@ -110,21 +97,21 @@ open class InfinitePageViewView : UIView, UIScrollViewDelegate {
             } else {
                 if self.scrollDirection == InfinitePageViewScrollDirection.horizontal {
 
-                    let view0 = delegate.bannerPageScrollView(viewForIndexAt: num-1)
+                    let view0 = delegate.InfinitePageView(viewForIndexAt: num-1)
                     self.viewList.append(view0)
                     view0.frame = CGRect(x: 0, y: 0,
                                          width: self.frame.width, height: self.frame.height)
                     self.scrollView.addSubview(view0)
                     
                     for i in 0..<num {
-                        let view = delegate.bannerPageScrollView(viewForIndexAt: i)
+                        let view = delegate.InfinitePageView(viewForIndexAt: i)
                         self.viewList.append(view)
                         view.frame = CGRect(x: CGFloat(i+1) * self.frame.width, y: 0,
                                             width: self.frame.width, height: self.frame.height)
                         self.scrollView.addSubview(view)
                     }
                     
-                    let view1 = delegate.bannerPageScrollView(viewForIndexAt: 0)
+                    let view1 = delegate.InfinitePageView(viewForIndexAt: 0)
                     self.viewList.append(view1)
                     view1.frame = CGRect(x: CGFloat(self.viewList.count - 1) * self.frame.width, y: 0,
                                          width: self.frame.width, height: self.frame.height)
@@ -134,21 +121,21 @@ open class InfinitePageViewView : UIView, UIScrollViewDelegate {
                     self.scrollView.contentOffset = CGPoint(x: self.frame.width * 1.0, y: 0);
                 } else {
 
-                    let view0 = delegate.bannerPageScrollView(viewForIndexAt: num-1)
+                    let view0 = delegate.InfinitePageView(viewForIndexAt: num-1)
                     self.viewList.append(view0)
                     view0.frame = CGRect(x: 0, y: 0,
                                          width: self.frame.width, height: self.frame.height)
                     self.scrollView.addSubview(view0)
 
                     for i in 0..<num {
-                        let view = delegate.bannerPageScrollView(viewForIndexAt: i)
+                        let view = delegate.InfinitePageView(viewForIndexAt: i)
                         self.viewList.append(view)
                         view.frame = CGRect(x: 0, y: CGFloat(i+1) * self.frame.height,
                                             width: self.frame.width, height: self.frame.height)
                         self.scrollView.addSubview(view)
                     }
 
-                    let view1 = delegate.bannerPageScrollView(viewForIndexAt: 0)
+                    let view1 = delegate.InfinitePageView(viewForIndexAt: 0)
                     self.viewList.append(view1)
                     view1.frame = CGRect(x: 0, y: CGFloat(self.viewList.count - 1) * self.frame.height,
                                          width: self.frame.width, height: self.frame.height)

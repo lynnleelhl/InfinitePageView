@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0BB9C09B1E54A2B000201FD8 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB9C09A1E54A2B000201FD8 /* MSWeakTimer.m */; };
+		660D9C7156DFE86483B4C3A4 /* Pods_InfinitePageView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC51AAB4EA0CEC73FE143F2F /* Pods_InfinitePageView.framework */; };
 		7DAF63981E520EB400531795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAF63971E520EB400531795 /* AppDelegate.swift */; };
 		7DAF639A1E520EB400531795 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAF63991E520EB400531795 /* ViewController.swift */; };
 		7DAF639D1E520EB400531795 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DAF639B1E520EB400531795 /* Main.storyboard */; };
@@ -19,8 +19,6 @@
 
 /* Begin PBXFileReference section */
 		0B0575331E52208700A76421 /* InfinitePageView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InfinitePageView-Bridging-Header.h"; sourceTree = "<group>"; };
-		0BB9C0991E54A2B000201FD8 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSWeakTimer.h; path = MSWeakTimer/MSWeakTimer.h; sourceTree = "<group>"; };
-		0BB9C09A1E54A2B000201FD8 /* MSWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSWeakTimer.m; path = MSWeakTimer/MSWeakTimer.m; sourceTree = "<group>"; };
 		7DAF63941E520EB400531795 /* InfinitePageView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinitePageView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DAF63971E520EB400531795 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DAF63991E520EB400531795 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +28,9 @@
 		7DAF63A41E520EB400531795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DAF63A61E520EB400531795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DAF63C91E520F0700531795 /* InfinitePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfinitePageView.swift; sourceTree = "<group>"; };
+		CC05A1C56E6E4EE6F6CD9218 /* Pods-InfinitePageView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfinitePageView.release.xcconfig"; path = "Pods/Target Support Files/Pods-InfinitePageView/Pods-InfinitePageView.release.xcconfig"; sourceTree = "<group>"; };
+		CC51AAB4EA0CEC73FE143F2F /* Pods_InfinitePageView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InfinitePageView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD0FA90C409D0FB312B1138C /* Pods-InfinitePageView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfinitePageView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InfinitePageView/Pods-InfinitePageView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,26 +38,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				660D9C7156DFE86483B4C3A4 /* Pods_InfinitePageView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0BB9C09C1E54A2B000201FD8 /* MSWeakTimer */ = {
-			isa = PBXGroup;
-			children = (
-				0BB9C09A1E54A2B000201FD8 /* MSWeakTimer.m */,
-				0BB9C0991E54A2B000201FD8 /* MSWeakTimer.h */,
-			);
-			name = MSWeakTimer;
-			sourceTree = "<group>";
-		};
 		7DAF638B1E520EB400531795 = {
 			isa = PBXGroup;
 			children = (
 				7DAF63961E520EB400531795 /* InfinitePageView */,
 				7DAF63951E520EB400531795 /* Products */,
+				C71603065C711FA5BE107F4F /* Pods */,
+				8D670CD1EA6156450472921F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,7 +66,6 @@
 		7DAF63961E520EB400531795 /* InfinitePageView */ = {
 			isa = PBXGroup;
 			children = (
-				0BB9C09C1E54A2B000201FD8 /* MSWeakTimer */,
 				7DAF63C81E520F0700531795 /* InfinitePageView */,
 				7DAF63971E520EB400531795 /* AppDelegate.swift */,
 				7DAF63991E520EB400531795 /* ViewController.swift */,
@@ -93,6 +87,23 @@
 			path = InfinitePageView;
 			sourceTree = "<group>";
 		};
+		8D670CD1EA6156450472921F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC51AAB4EA0CEC73FE143F2F /* Pods_InfinitePageView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C71603065C711FA5BE107F4F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FD0FA90C409D0FB312B1138C /* Pods-InfinitePageView.debug.xcconfig */,
+				CC05A1C56E6E4EE6F6CD9218 /* Pods-InfinitePageView.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -100,9 +111,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7DAF63BF1E520EB400531795 /* Build configuration list for PBXNativeTarget "InfinitePageView" */;
 			buildPhases = (
+				09DB0725437073CE3D81A816 /* [CP] Check Pods Manifest.lock */,
 				7DAF63901E520EB400531795 /* Sources */,
 				7DAF63911E520EB400531795 /* Frameworks */,
 				7DAF63921E520EB400531795 /* Resources */,
+				2712DFD680AA38E7C8935C87 /* [CP] Embed Pods Frameworks */,
+				727D9152EB0CD3CA464E4B41 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -161,6 +175,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09DB0725437073CE3D81A816 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2712DFD680AA38E7C8935C87 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InfinitePageView/Pods-InfinitePageView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		727D9152EB0CD3CA464E4B41 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InfinitePageView/Pods-InfinitePageView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7DAF63901E520EB400531795 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -170,7 +232,6 @@
 				7DAF639A1E520EB400531795 /* ViewController.swift in Sources */,
 				7DAF63981E520EB400531795 /* AppDelegate.swift in Sources */,
 				7DAF63CA1E520F0700531795 /* InfinitePageView.swift in Sources */,
-				0BB9C09B1E54A2B000201FD8 /* MSWeakTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +352,7 @@
 		};
 		7DAF63C01E520EB400531795 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD0FA90C409D0FB312B1138C /* Pods-InfinitePageView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -308,6 +370,7 @@
 		};
 		7DAF63C11E520EB400531795 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC05A1C56E6E4EE6F6CD9218 /* Pods-InfinitePageView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
