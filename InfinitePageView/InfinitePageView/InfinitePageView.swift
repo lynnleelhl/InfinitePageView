@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import MSWeakTimer
+import UIKit
 
 public enum InfinitePageViewScrollDirection {
     case vertical
@@ -23,7 +23,7 @@ open class InfinitePageViewView : UIView, UIScrollViewDelegate {
 
     open var scrollDirection : InfinitePageViewScrollDirection = InfinitePageViewScrollDirection.horizontal
     fileprivate var viewList = [UIView]()
-    open weak var delegate: InfinitePageViewDelegate?
+    open var delegate: InfinitePageViewDelegate?
 
     open var setResourceBlock : ((_ idx : Int, _ view : UIView) -> Void)?
 
@@ -55,16 +55,31 @@ open class InfinitePageViewView : UIView, UIScrollViewDelegate {
         self.scrollView.showsVerticalScrollIndicator = false
         self.scrollView.showsHorizontalScrollIndicator = false
         self.scrollView.isPagingEnabled = true
+        
+        // add constaints, target 9.0 or above
+        let margins = self.layoutMarginsGuide
+        self.scrollView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+        self.scrollView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
+        self.scrollView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        self.scrollView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        let scrollViewMargins = self.scrollView.layoutMarginsGuide
+        self.pageControl.bottomAnchor.constraint(equalTo: scrollViewMargins.bottomAnchor, constant: -6).isActive = true
+        self.pageControl.centerXAnchor.constraint(equalTo: scrollViewMargins.centerXAnchor).isActive = true
+        self.pageControl.heightAnchor.constraint(equalToConstant: 5).isActive = true
 
-        self.scrollView.snp.makeConstraints { (make) in
-            make.edges.equalTo(0.0)
-        }
+        
+        // or if you want to support target 9.0 below,
+        // you can uncomment the following code and import SnapKit
+        
+        //self.scrollView.snp.makeConstraints { (make) in
+        //    make.edges.equalTo(0.0)
+        //}
 
-        self.pageControl.snp.makeConstraints { (make) in
-            make.bottom.equalTo(-6.0)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(5.0)
-        }
+        //self.pageControl.snp.makeConstraints { (make) in
+        //    make.bottom.equalTo(-6.0)
+        //    make.centerX.equalToSuperview()
+        //    make.height.equalTo(5.0)
+        //}
 
         self.initTimer()
     }
