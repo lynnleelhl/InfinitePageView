@@ -11,35 +11,49 @@ import UIKit
 import SnapKit
 import MSWeakTimer
 
-public enum InfinitePageViewScrollDirection {
+public enum UIInfinitePageViewScrollDirection {
     case vertical
     case horizontal
 }
 
-public protocol InfinitePageViewDelegate {
+public protocol UIInfinitePageViewDelegate {
     func numberOfViews() -> Int
     func InfinitePageView(viewForIndexAt index: Int) -> UIView
 }
 
-open class InfinitePageView : UIView, UIScrollViewDelegate {
+open class UIInfinitePageView: UIView, UIScrollViewDelegate {
 
-    open var scrollDirection : InfinitePageViewScrollDirection = InfinitePageViewScrollDirection.horizontal
+    open var scrollDirection: UIInfinitePageViewScrollDirection = UIInfinitePageViewScrollDirection.horizontal
     fileprivate var viewList = [UIView]()
-    open var delegate: InfinitePageViewDelegate?
+    open var delegate: UIInfinitePageViewDelegate?
 
-    open var setResourceBlock : ((_ idx : Int, _ view : UIView) -> Void)?
+    open var isAutoScroll: Bool = true {
+        didSet {
+            if isAutoScroll == false {
+                self.timer = nil
+            } else {
+                self.initTimer()
+            }
+        }
+    }
+    
+    open var duringTime: TimeInterval = 5.0 {
+        didSet {
+            self.timer = nil
+            self.initTimer()
+        }
+    }
+    
+    fileprivate var timer: MSWeakTimer?
+    open var animationTime: TimeInterval = 0.5
 
-    open var duringTime : TimeInterval = 5.0
-    open var timer : MSWeakTimer?
-    open var animationTime : TimeInterval = 0.5
-
-    fileprivate lazy var scrollView : UIScrollView = {
+    fileprivate lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         self.addSubview(view)
         return view
     }()
 
-    open lazy var pageControl : UIPageControl = {
+    open lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.isUserInteractionEnabled = false
         pc.currentPageIndicatorTintColor = UIColor.white
@@ -48,6 +62,10 @@ open class InfinitePageView : UIView, UIScrollViewDelegate {
         self.addSubview(pc)
         return pc
     }()
+    
+    convenience public init() {
+        self.init(frame: CGRect.zero)
+    }
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,6 +94,9 @@ open class InfinitePageView : UIView, UIScrollViewDelegate {
     }
 
     open func reloadData() {
+        
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
 
         for view in self.viewList {
             view.removeFromSuperview()
@@ -95,7 +116,7 @@ open class InfinitePageView : UIView, UIScrollViewDelegate {
                 }
                 self.pageControl.isHidden = true
             } else {
-                if self.scrollDirection == InfinitePageViewScrollDirection.horizontal {
+                if self.scrollDirection == UIInfinitePageViewScrollDirection.horizontal {
 
                     let view0 = delegate.InfinitePageView(viewForIndexAt: num-1)
                     self.viewList.append(view0)
@@ -119,6 +140,8 @@ open class InfinitePageView : UIView, UIScrollViewDelegate {
 
                     self.scrollView.contentSize = CGSize(width: self.frame.width * CGFloat(self.viewList.count), height: self.frame.height)
                     self.scrollView.contentOffset = CGPoint(x: self.frame.width * 1.0, y: 0);
+                    
+                    self.pageControl.isHidden = false
                 } else {
 
                     let view0 = delegate.InfinitePageView(viewForIndexAt: num-1)
@@ -147,7 +170,6 @@ open class InfinitePageView : UIView, UIScrollViewDelegate {
                     self.pageControl.isHidden = true
                     self.scrollView.contentOffset = CGPoint(x: 0, y: self.frame.height * 1.0);
                 }
-                self.pageControl.isHidden = false
                 self.pageControl.numberOfPages = num
             }
         }
@@ -159,7 +181,7 @@ open class InfinitePageView : UIView, UIScrollViewDelegate {
 
     // MARK: scrollView delegate
     open func scrollViewDidScroll(_ scrollView : UIScrollView) {
-        if self.scrollDirection == InfinitePageViewScrollDirection.horizontal {
+        if self.scrollDirection == UIInfinitePageViewScrollDirection.horizontal {
             scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: 0)
         } else {
             scrollView.contentOffset = CGPoint(x: 0, y: scrollView.contentOffset.y)
@@ -167,7 +189,7 @@ open class InfinitePageView : UIView, UIScrollViewDelegate {
     }
 
     open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if self.scrollDirection == InfinitePageViewScrollDirection.horizontal {
+        if self.scrollDirection == UIInfinitePageViewScrollDirection.horizontal {
             guard scrollView.frame.width != 0 else {
                 return
             }
@@ -213,7 +235,7 @@ open class InfinitePageView : UIView, UIScrollViewDelegate {
             return
         }
 
-        if self.scrollDirection == InfinitePageViewScrollDirection.horizontal {
+        if self.scrollDirection == UIInfinitePageViewScrollDirection.horizontal {
             UIView.animate(withDuration: self.animationTime, animations: { [weak self] in
                 self?.scrollView.contentOffset = CGPoint(x: (self?.scrollView.contentOffset.x ?? 0) + (self?.frame.width ?? 0), y: 0)
             })
