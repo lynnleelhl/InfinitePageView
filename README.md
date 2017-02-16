@@ -3,7 +3,7 @@ A simple infinite page scroll view, writen in Swift 3.0
 ### Get started
 Clone this git and run the demo, you'll see how to use InfinitPageView!
 
- 1. confirm your class to protocol *UIInfinitePageViewDelegate*
+1. confirm your class to protocol *UIInfinitePageViewDelegate*
  
     ```
         
@@ -22,7 +22,7 @@ Clone this git and run the demo, you'll see how to use InfinitPageView!
 
     ```
     
-  2. create an InfinitePageView instance, and customize some features
+2. create an InfinitePageView instance, and customize some features
   
     ```
         let customVerticalView = UIInfinitePageView()
@@ -32,7 +32,7 @@ Clone this git and run the demo, you'll see how to use InfinitPageView!
 
     ```
 
-  3. add this view to your wrapper view's subviews, and set the frame or the constaints of it
+3. add this view to your wrapper view's subviews, and set the frame or the constaints of it
   
     ```
         self.view.addSubview(customVerticalView)
@@ -44,7 +44,7 @@ Clone this git and run the demo, you'll see how to use InfinitPageView!
 
     ```
     
-   4. reload data to inform InfinitePageView that you are ready to show the view
+4. reload data to inform InfinitePageView that you are ready to show the view
     
     ```
     customVerticalView.reloadData()
@@ -52,7 +52,7 @@ Clone this git and run the demo, you'll see how to use InfinitPageView!
     
 ### GIF Demo
 
-[demo](https://cloud.githubusercontent.com/assets/10272065/23032367/1422b9b0-f4af-11e6-8923-4ae5fd9324c3.gif)
+![demo](https://cloud.githubusercontent.com/assets/10272065/23032367/1422b9b0-f4af-11e6-8923-4ae5fd9324c3.gif)
 
 ### Custom Features
 // TODO 
