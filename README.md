@@ -51,7 +51,9 @@ Clone this git and run the demo, you'll see how to use InfinitPageView!
     ```
     
 ### GIF Demo
-[demo]()
+
+[demo](https://cloud.githubusercontent.com/assets/10272065/23032367/1422b9b0-f4af-11e6-8923-4ae5fd9324c3.gif)
+
 ### Custom Features
 // TODO 
 
