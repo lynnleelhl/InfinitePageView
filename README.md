@@ -1,5 +1,5 @@
 # InfinitePageView
-A simple infinite page scroll view
+A simple infinite page scroll view, writen in Swift 3.0
 ### Get started
 Clone this git and run the demo, you'll see how to use InfinitPageView!
 
